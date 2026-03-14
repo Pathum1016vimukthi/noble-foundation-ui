@@ -39,11 +39,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-navy shadow-lg" : "bg-navy/90"}`}>
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={ieslLogo} alt="IESL Logo" className="h-10" />
-          <img src={jiyLogo} alt="JIY Logo" className="h-10" />
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-card shadow-lg" : "bg-card"}`}>
+      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-20">
+        <Link to="/" className="flex items-center gap-3">
+          <img src={ieslLogo} alt="IESL Logo" className="h-14" />
+          <img src={jiyLogo} alt="JIY Logo" className="h-14" />
         </Link>
 
         {/* Desktop */}
@@ -54,7 +54,7 @@ const Navbar = () => {
                 key={link.label}
                 href={link.href}
                 onClick={(e) => { e.preventDefault(); handleClick(link.href); }}
-                className="text-navy-foreground/80 hover:text-gold font-body font-semibold text-xs uppercase tracking-widest transition-colors"
+                className="text-charcoal hover:text-royal font-body font-semibold text-xs uppercase tracking-widest transition-colors"
               >
                 {link.label}
               </a>
@@ -62,7 +62,7 @@ const Navbar = () => {
               <Link
                 key={link.label}
                 to={link.href}
-                className="text-navy-foreground/80 hover:text-gold font-body font-semibold text-xs uppercase tracking-widest transition-colors"
+                className="text-charcoal hover:text-royal font-body font-semibold text-xs uppercase tracking-widest transition-colors"
               >
                 {link.label}
               </Link>
@@ -71,7 +71,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile toggle */}
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden text-navy-foreground">
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden text-charcoal">
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
