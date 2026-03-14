@@ -1,14 +1,31 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import "@fontsource/playfair-display/700.css";
+import "@fontsource/open-sans/400.css";
+import "@fontsource/open-sans/500.css";
+import "@fontsource/open-sans/600.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
+import HeroSection from "@/components/home/HeroSection";
+import AboutSection from "@/components/home/AboutSection";
+import CommitteeSection from "@/components/home/CommitteeSection";
+import CompetitionSection from "@/components/home/CompetitionSection";
+import RegistrationSection from "@/components/home/RegistrationSection";
+import GallerySection from "@/components/home/GallerySection";
+import FAQSection from "@/components/home/FAQSection";
 
-const Index = () => {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
-  );
-};
+const Index = () => (
+  <>
+    <Navbar />
+    <HeroSection />
+    <AboutSection />
+    <CommitteeSection />
+    <CompetitionSection />
+    <RegistrationSection />
+    <GallerySection />
+    <FAQSection />
+    <Footer />
+    <BackToTop />
+  </>
+);
 
 export default Index;
