@@ -41,8 +41,9 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-navy shadow-lg" : "bg-navy/90"}`}>
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
-        <Link to="/" className="flex items-center">
-          <img src={ieslLogo} alt="IESL JIY Logo" className="h-12" />
+        <Link to="/" className="flex items-center gap-2">
+          <img src={ieslLogo} alt="IESL Logo" className="h-10" />
+          <img src={jiyLogo} alt="JIY Logo" className="h-10" />
         </Link>
 
         {/* Desktop */}
