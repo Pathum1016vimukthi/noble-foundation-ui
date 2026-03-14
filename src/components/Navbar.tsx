@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import ieslLogo from "@/assets/iesl-jiy-logo.png";
+import ieslLogo from "@/assets/iesl-logo.jpg";
+import jiyLogo from "@/assets/jiy-logo.jpg";
 
 const navLinks = [
   { label: "HOMEPAGE", href: "/#hero" },
