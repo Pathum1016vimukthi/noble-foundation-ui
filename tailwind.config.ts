@@ -106,10 +106,20 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "blink": {
+          "0%, 100%": { opacity: "1", boxShadow: "0 0 0 0 hsl(var(--gold) / 0.7)" },
+          "50%": { opacity: "0.85", boxShadow: "0 0 0 8px hsl(var(--gold) / 0)" },
+        },
+        "fade-in-up": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "blink": "blink 1.4s ease-in-out infinite",
+        "fade-in-up": "fade-in-up 0.6s ease-out both",
       },
     },
   },

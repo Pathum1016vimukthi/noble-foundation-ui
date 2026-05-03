@@ -40,8 +40,12 @@ const CompetitionSection = () => (
       <div className="relative max-w-2xl mx-auto mb-16">
         <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gold" />
         {timeline.map((item, i) => (
-          <div key={i} className="relative pl-12 pb-8 last:pb-0">
-            <div className="absolute left-2.5 top-1 w-3 h-3 rounded-full bg-gold border-2 border-card" />
+          <div
+            key={i}
+            className="relative pl-12 pb-8 last:pb-0 animate-fade-in-up"
+            style={{ animationDelay: `${i * 150}ms` }}
+          >
+            <div className="absolute left-2.5 top-1 w-3 h-3 rounded-full bg-gold border-2 border-card animate-pulse" />
             <p className="text-xs text-caption font-body font-medium uppercase tracking-wider">{item.date}</p>
             <p className="text-foreground font-semibold mt-1">{item.event}</p>
           </div>
