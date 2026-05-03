@@ -68,6 +68,13 @@ const Navbar = () => {
               </Link>
             )
           )}
+          <a
+            href="/#registration"
+            onClick={(e) => { e.preventDefault(); handleClick("/#registration"); }}
+            className="bg-gold text-white rounded px-5 py-2 font-body font-bold text-xs uppercase tracking-widest animate-blink hover:bg-royal transition-colors"
+          >
+            Register
+          </a>
         </div>
 
         {/* Mobile toggle */}
