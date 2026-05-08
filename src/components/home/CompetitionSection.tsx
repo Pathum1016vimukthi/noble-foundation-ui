@@ -65,15 +65,32 @@ const CompetitionSection = () => (
       {/* Prizes */}
       <h3 className="text-2xl text-charcoal text-center mb-8">Prizes</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-        {prizes.map((p) => (
-          <div key={p.place} className="bg-card rounded shadow card-hover text-center p-8 border border-border">
-            <div className={`${p.size} mx-auto mb-4 flex items-center justify-center`}>
-              <p.Icon />
-            </div>
-            <h4 className="font-heading text-lg font-bold text-charcoal mb-2">{p.place}</h4>
-            <p className="text-xl font-bold text-royal">{p.amount}</p>
+        {/* 1st Place — Rocket Fly */}
+        <div className="group bg-card rounded shadow card-hover text-center p-8 border border-border overflow-hidden relative">
+          <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center group-hover:animate-rocket-fly">
+            <RocketIcon />
           </div>
-        ))}
+          <h4 className="font-heading text-lg font-bold text-charcoal mb-2">1st Place</h4>
+          <p className="text-xl font-bold text-royal">LKR 500,000</p>
+        </div>
+
+        {/* 2nd Place — Lightbulb Glow */}
+        <div className="group bg-card rounded shadow card-hover text-center p-8 border border-border transition-colors duration-500 hover:bg-cyan-500/20">
+          <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:filter group-hover:drop-shadow-[0_0_15px_rgba(34,211,238,0.8)]">
+            <BulbIcon />
+          </div>
+          <h4 className="font-heading text-lg font-bold text-charcoal mb-2">2nd Place</h4>
+          <p className="text-xl font-bold text-royal">LKR 300,000</p>
+        </div>
+
+        {/* 3rd Place — Pulse & Spin */}
+        <div className="group bg-card rounded shadow card-hover text-center p-8 border border-border">
+          <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center group-hover:animate-pulse-spin">
+            <TargetIcon />
+          </div>
+          <h4 className="font-heading text-lg font-bold text-charcoal mb-2">3rd Place</h4>
+          <p className="text-xl font-bold text-royal">LKR 150,000</p>
+        </div>
       </div>
     </div>
   </section>
