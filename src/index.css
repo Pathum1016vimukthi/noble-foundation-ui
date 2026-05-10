@@ -98,6 +98,48 @@
   }
 }
 
+/* Rocket Animations */
+@keyframes rocket-flame {
+    from { transform: scaleY(1); }
+    to { transform: scaleY(1.5) scaleX(0.85); }
+}
+@keyframes rocket-shake {
+    0%, 100% { transform: translateX(-50%); }
+    25% { transform: translateX(-52%); }
+    75% { transform: translateX(-48%); }
+}
+
+@keyframes rocket-launch-top {
+    0% { 
+        top: 150px; /* Starting position near the top */
+        transform: translateX(-50%) scale(1); 
+    }
+    20% { 
+        top: 130px; 
+        transform: translateX(-50%) scale(1.05); 
+    }
+    100% { 
+        top: -150%; /* Fly way up past the top edge */
+        transform: translateX(-50%) scale(1.1); 
+    }
+}
+@keyframes rocket-smoke {
+    0% {
+       transform: translateX(-50%) translateY(0px) scale(1); opacity: 0.7; 
+      }
+    100% { 
+      transform: translateX(-50%) translateY(120px) scale(4); opacity: 0; 
+    }
+}
+@keyframes rocket-stars {
+    from { top: -40px; opacity: 0.4; }
+    to { top: 120%; opacity: 0; }
+}
+.animate-flame {
+    transform-origin: center top;
+    animation: rocket-flame 0.08s infinite alternate;
+}
+
 html {
   scroll-behavior: smooth;
 }
