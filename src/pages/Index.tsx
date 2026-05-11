@@ -12,12 +12,14 @@ import CompetitionSection from "@/components/home/CompetitionSection";
 import RegistrationSection from "@/components/home/RegistrationSection";
 import GallerySection from "@/components/home/GallerySection";
 import FAQSection from "@/components/home/FAQSection";
+import TimelineSection from "@/components/home/TimelineSection";
 
 const Index = () => (
   <>
     <Navbar />
     <HeroSection />
     <CompetitionSection />
+    <TimelineSection />
     <RegistrationSection />
     <AboutSection />
     <CommitteeSection />
