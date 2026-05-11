@@ -13,6 +13,7 @@ import RegistrationSection from "@/components/home/RegistrationSection";
 import GallerySection from "@/components/home/GallerySection";
 import FAQSection from "@/components/home/FAQSection";
 import TimelineSection from "@/components/home/TimelineSection";
+import PrizesSection from "@/components/home/PrizesSection";
 
 const Index = () => (
   <>
@@ -20,6 +21,7 @@ const Index = () => (
     <HeroSection />
     <CompetitionSection />
     <TimelineSection />
+    <PrizesSection />
     <RegistrationSection />
     <AboutSection />
     <CommitteeSection />
