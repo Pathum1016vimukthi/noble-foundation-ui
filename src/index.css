@@ -140,6 +140,17 @@
     animation: rocket-flame 0.08s infinite alternate;
 }
 
+@keyframes timeline-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px hsl(var(--gold) / 0.25), 0 0 0 0 hsl(var(--gold) / 0.6); }
+  50% { box-shadow: 0 0 0 8px hsl(var(--gold) / 0.15), 0 0 14px 4px hsl(var(--gold) / 0.55); }
+}
+.animate-timeline-pulse {
+  animation: timeline-pulse 2.4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-timeline-pulse { animation: none; }
+}
+
 html {
   scroll-behavior: smooth;
 }
