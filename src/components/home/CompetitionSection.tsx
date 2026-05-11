@@ -23,7 +23,6 @@ const RocketIcon = () => (
         <feComposite in="SourceGraphic" in2="blur" operator="over" />
       </filter>
     </defs>
-    {/* Animated Flame */}
     <g className="animate-flame">
       <path d="M45 85 Q60 120 75 85 Z" fill="url(#flameGrad)" filter="url(#glowGold)" />
       <path d="M52 85 Q60 105 68 85 Z" fill="#FFFFFF" />
@@ -94,7 +93,7 @@ const TargetIcon = () => (
     <g className="origin-center group-hover:animate-[radar-rotate-reverse_5s_linear_infinite]"><circle cx="60" cy="60" r="25" fill="none" stroke="#EA580C" strokeWidth="2" filter="url(#glowOrange)" /></g>
     <g className="origin-center group-hover:animate-[radar-core-pulse_1.5s_ease-in-out_infinite]"><polygon points="60,45 75,60 60,75 45,60" fill="url(#bronzeGrad)" filter="url(#glowOrange)" /></g>
     <g className="group-hover:animate-[radar-bracket-pulse_2s_ease-in-out_infinite]"><path d="M30 40 L20 40 L20 50 M90 40 L100 40 L100 50 M30 80 L20 80 L20 70 M90 80 L100 80 L100 70" fill="none" stroke="#F97316" strokeWidth="2" /></g>
-    {[ {cx:60, cy:20}, {cx:60, cy:100}, {cx:20, cy:60}, {cx:100, cy:60} ].map((n, i) => (
+    {[{ cx: 60, cy: 20 }, { cx: 60, cy: 100 }, { cx: 20, cy: 60 }, { cx: 100, cy: 60 }].map((n, i) => (
       <circle key={i} className="origin-center group-hover:animate-[radar-node-blink_1s_infinite_alternate]" cx={n.cx} cy={n.cy} r="3" fill="#FB923C" style={{ animationDelay: `${i * 0.3}s` }} />
     ))}
   </svg>
@@ -106,11 +105,10 @@ const CompetitionSection = () => (
       <h2 className="text-3xl md:text-4xl text-charcoal text-center mb-4">The Competition</h2>
       <div className="gold-divider mb-12" />
 
-      {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
         <div>
           <p className="text-foreground leading-relaxed mb-6">
-            The IESL Junior Inventor of the Year competition is Sri Lanka's premier platform for young innovators aged 12–19.
+            The IESL Junior Inventor of the Year competition is Sri Lanka's premier platform for young innovators aged 12-19.
           </p>
           <p className="text-foreground leading-relaxed mb-6">
             Projects are evaluated on innovation, feasibility, social impact, and presentation quality.
@@ -120,71 +118,6 @@ const CompetitionSection = () => (
         <div className="bg-soft-grey rounded-lg h-64 lg:h-auto flex items-center justify-center">
           <span className="text-caption text-sm">Competition Illustration</span>
         </div>
-      </div>
-
-      {/* Prizes Section */}
-      <h3 className="text-2xl text-charcoal text-center mb-8">Prizes</h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto items-end">
-        
-        {/* 2nd Place Card — FIXED CENTER & DARK BACKGROUND */}
-        <div className="group relative bg-[#020617] rounded shadow-xl text-center p-8 border border-white/10 overflow-hidden min-h-[350px] flex flex-col justify-end transition-all duration-500 hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]">
-          
-          {/* The Bulb Container - Fixed centering */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-[140px] w-28 h-28 group-hover:animate-[bulb-float_4s_ease-in-out_infinite]">
-            <BulbIcon />
-          </div>
-
-          {/* Text Content - Forced text colors to avoid theme switching */}
-          <div className="relative z-10">
-            <h4 className="font-heading text-lg font-bold text-white mb-2">2nd Place</h4>
-            <p className="text-xl font-bold text-cyan-400">LKR 300,000</p>
-          </div>
-        </div>
-
-        {/* 1st Place Card - THE ROCKET SCENE */}
-        <div className="group relative bg-[#020617] rounded shadow-2xl text-center p-8 border-2 border-white/10 overflow-hidden min-h-[400px] flex flex-col justify-end">
-          
-          {/* Animated Stars */}
-          {[1, 2, 3, 4].map((i) => (
-            <div 
-              key={i} 
-              className="absolute w-[2px] height-[25px] bg-white rounded-full opacity-0 group-hover:animate-[rocket-stars_1s_linear_infinite]"
-              style={{ left: `${i * 20}%`, animationDelay: `${i * 0.3}s` }}
-            />
-          ))}
-
-          {/* Animated Smoke */}
-          {[1, 2, 3, 4].map((i) => (
-            <div 
-              key={i} 
-              className="absolute top-[180px] left-1/2 w-4 h-4 bg-white/20 rounded-full blur-[2px] opacity-0 group-hover:animate-[rocket-smoke_2s_linear_forwards]"
-              style={{ animationDelay: `${i * 0.4}s` }}
-            />
-          ))}
-
-          {/* The Rocket Wrapper */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-[150px] w-28 h-28 group-hover:animate-[rocket-shake_0.08s_infinite,rocket-launch-top_2.5s_ease-in_forwards] z-30">
-          <RocketIcon />
-        </div>
-
-          {/* Content */}
-          <div className="relative z-10 bg-[#020617]/60 p-2 rounded">
-            <h4 className="font-heading text-xl font-bold text-white mb-1">1st Place</h4>
-            <p className="text-2xl font-bold text-[#FBBF24] drop-shadow-md">LKR 500,000</p>
-          </div>
-        </div>
-
-        {/* 3rd Place - Radar */}
-        <div className="group relative bg-[#020617] rounded-xl shadow-xl text-center p-8 border border-white/10 overflow-hidden min-h-[380px] flex flex-col justify-end transition-all duration-500 hover:shadow-orange-500/20">
-          <div className="absolute left-1/2 -translate-x-1/2 top-[140px] w-28 h-28 group-hover:animate-[radar-float_5s_ease-in-out_infinite]">
-            <TargetIcon />
-          </div>
-          <div className="relative z-10">
-            <h4 className="font-heading text-lg font-bold text-white mb-2">3rd Place</h4>
-            <p className="text-xl font-bold text-orange-500">LKR 150,000</p>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>

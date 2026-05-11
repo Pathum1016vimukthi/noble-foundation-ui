@@ -61,26 +61,26 @@ const TimelineItem = ({ item, index }: { item: typeof events[0]; index: number }
   }, []);
 
   const nodeClassMap = {
-    completed: "bg-gradient-to-br from-amber-500 via-orange-500 to-orange-700 ring-amber-300/80 shadow-[0_0_20px_rgba(217,119,6,0.8),inset_0_0_10px_rgba(255,255,255,0.3)]",
-    ongoing: "bg-gradient-to-br from-yellow-300 via-amber-400 to-orange-500 ring-yellow-200/90 shadow-[0_0_30px_rgba(250,204,21,1),0_0_50px_rgba(250,204,21,0.5),inset_0_0_15px_rgba(255,255,255,0.5)] animate-pulse-glow",
-    upcoming: "bg-gradient-to-br from-gold via-yellow-400 to-amber-300 ring-gold/70 shadow-[0_0_12px_rgba(250,204,21,0.6)]"
+    completed: "bg-gradient-to-br from-blue-500 via-sky-500 to-gold ring-blue-300/80 shadow-[0_0_20px_rgba(59,130,246,0.8),inset_0_0_10px_rgba(255,255,255,0.3)]",
+    ongoing: "bg-gradient-to-br from-gold via-blue-400 to-blue-600 ring-gold/90 shadow-[0_0_30px_rgba(250,204,21,1),0_0_50px_rgba(59,130,246,0.35),inset_0_0_15px_rgba(255,255,255,0.5)] animate-pulse-glow",
+    upcoming: "bg-gradient-to-br from-gold via-yellow-400 to-blue-300 ring-gold/70 shadow-[0_0_12px_rgba(250,204,21,0.6)]"
   };
 
   const cardClassMap = {
-    completed: "border-2 border-amber-400/80 bg-gradient-to-br from-card via-amber-950/10 to-orange-950/15 hover:border-orange-500 hover:shadow-[0_0_40px_-8px_rgba(217,119,6,0.9)] shadow-[0_8px_32px_rgba(217,119,6,0.3)]",
-    ongoing: "border-2 border-yellow-400/90 bg-gradient-to-br from-card via-yellow-100/10 to-amber-900/15 hover:border-yellow-300 hover:shadow-[0_0_50px_-8px_rgba(250,204,21,0.9)] shadow-[0_8px_40px_rgba(250,204,21,0.4)] ring-2 ring-yellow-300/40",
-    upcoming: "border-2 border-gold/70 bg-gradient-to-br from-card to-amber-900/5 hover:border-gold hover:shadow-[0_0_30px_-8px_hsl(var(--gold)/0.7)] shadow-[0_4px_20px_rgba(250,204,21,0.2)]"
+    completed: "border-2 border-blue-400/80 bg-gradient-to-br from-card via-blue-950/10 to-gold/10 hover:border-blue-500 hover:shadow-[0_0_40px_-8px_rgba(59,130,246,0.9)] shadow-[0_8px_32px_rgba(59,130,246,0.3)]",
+    ongoing: "border-2 border-gold/90 bg-gradient-to-br from-card via-blue-100/10 to-gold/10 hover:border-gold hover:shadow-[0_0_50px_-8px_rgba(250,204,21,0.9)] shadow-[0_8px_40px_rgba(59,130,246,0.22)] ring-2 ring-gold/40",
+    upcoming: "border-2 border-gold/70 bg-gradient-to-br from-card to-blue-950/5 hover:border-gold hover:shadow-[0_0_30px_-8px_hsl(var(--gold)/0.7)] shadow-[0_4px_20px_rgba(250,204,21,0.2)]"
   };
 
   const statusBadgeMap = {
     completed: { 
       text: "✓ COMPLETED", 
-      color: "bg-gradient-to-r from-amber-500 to-orange-600 text-white border-orange-600/60 font-bold animate-fade-in-slow",
+      color: "bg-gradient-to-r from-blue-500 to-gold text-white border-blue-600/60 font-bold animate-fade-in-slow",
       icon: "✓"
     },
     ongoing: { 
       text: "● IN PROGRESS", 
-      color: "bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 border-yellow-300/80 font-bold animate-pulse-badge",
+      color: "bg-gradient-to-r from-gold to-blue-500 text-slate-900 border-gold/80 font-bold animate-pulse-badge",
       icon: "◆"
     },
     upcoming: { 
@@ -103,8 +103,8 @@ const TimelineItem = ({ item, index }: { item: typeof events[0]; index: number }
         <div className="relative">
           {/* Outer glow rings */}
           <div className={`absolute inset-0 rounded-full opacity-60 ${
-            status === "completed" ? "bg-amber-500/30 blur-lg w-10 h-10 -top-2 -left-2" :
-            status === "ongoing" ? "bg-yellow-400/50 blur-xl w-12 h-12 -top-3 -left-3 animate-pulse" :
+            status === "completed" ? "bg-blue-500/30 blur-lg w-10 h-10 -top-2 -left-2" :
+            status === "ongoing" ? "bg-gold/50 blur-xl w-12 h-12 -top-3 -left-3 animate-pulse" :
             "bg-gold/20 blur-md w-8 h-8 -top-1 -left-1"
           }`} />
           
@@ -124,8 +124,8 @@ const TimelineItem = ({ item, index }: { item: typeof events[0]; index: number }
       <div className="md:hidden absolute left-4 top-6 z-20">
         <div className="relative">
           <div className={`absolute inset-0 rounded-full opacity-50 ${
-            status === "completed" ? "bg-amber-500/25 blur-md w-8 h-8 -top-1.5 -left-1.5" :
-            status === "ongoing" ? "bg-yellow-400/40 blur-lg w-10 h-10 -top-2 -left-2 animate-pulse" :
+            status === "completed" ? "bg-blue-500/25 blur-md w-8 h-8 -top-1.5 -left-1.5" :
+            status === "ongoing" ? "bg-gold/40 blur-lg w-10 h-10 -top-2 -left-2 animate-pulse" :
             "bg-gold/15 blur-sm w-6 h-6 -top-0.5 -left-0.5"
           }`} />
           <span className={`block w-5 h-5 rounded-full ring-3 ring-background transition-all duration-500 ${nodeClassMap[status]}`} />
@@ -148,7 +148,7 @@ const TimelineItem = ({ item, index }: { item: typeof events[0]; index: number }
         >
           {/* Animated top border for ongoing */}
           {status === "ongoing" && (
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent animate-shimmer" />
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-shimmer" />
           )}
 
           {/* Card image section */}
@@ -167,22 +167,22 @@ const TimelineItem = ({ item, index }: { item: typeof events[0]; index: number }
             {/* Status-based overlay */}
             <div className={`absolute inset-0 bg-gradient-to-t ${
               status === "completed"
-                ? "from-amber-950/90 via-amber-900/40 to-transparent"
+                ? "from-blue-950/90 via-blue-900/40 to-transparent"
                 : status === "ongoing"
-                ? "from-yellow-950/90 via-yellow-900/40 to-transparent"
+                ? "from-gold/90 via-blue-900/40 to-transparent"
                 : "from-navy/80 via-navy/20 to-transparent"
             } to-transparent`} />
 
             {/* Progress indicator for ongoing */}
             {status === "ongoing" && (
-              <div className="absolute inset-0 border-2 border-transparent border-t-yellow-400 border-r-yellow-400 animate-spin-slow opacity-40" />
+              <div className="absolute inset-0 border-2 border-transparent border-t-blue-400 border-r-gold animate-spin-slow opacity-40" />
             )}
 
             {/* Date badge at bottom */}
             <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center">
               <span className={`inline-block text-xs font-bold tracking-widest uppercase ${
-                status === "completed" ? "text-amber-300 drop-shadow-lg" :
-                status === "ongoing" ? "text-yellow-300 drop-shadow-lg font-bold" :
+                status === "completed" ? "text-blue-300 drop-shadow-lg" :
+                status === "ongoing" ? "text-gold drop-shadow-lg font-bold" :
                 "text-gold drop-shadow-md"
               }`}>
                 {item.date}
@@ -197,7 +197,7 @@ const TimelineItem = ({ item, index }: { item: typeof events[0]; index: number }
                 {item.title}
               </h3>
               {status === "completed" && (
-                <span className="text-[10px] font-extrabold px-3 py-1.5 rounded-full border-2 whitespace-nowrap flex-shrink-0 shadow-lg bg-gradient-to-r from-amber-500 to-orange-600 text-white border-orange-600/60">
+                <span className="text-[10px] font-extrabold px-3 py-1.5 rounded-full border-2 whitespace-nowrap flex-shrink-0 shadow-lg bg-gradient-to-r from-blue-500 to-gold text-white border-blue-600/60">
                   ✓ COMPLETED
                 </span>
               )}
@@ -252,11 +252,11 @@ const TimelineSection = () => {
           
           {/* Gold/Brown animated spine fill - desktop */}
           <div
-            className="hidden md:block absolute left-1/2 top-0 -translate-x-1/2 w-[2px] bg-gradient-to-b from-amber-500 via-yellow-600 to-orange-700 will-change-[height] shadow-lg"
+              className="hidden md:block absolute left-1/2 top-0 -translate-x-1/2 w-[2px] bg-gradient-to-b from-blue-500 via-gold to-blue-700 will-change-[height] shadow-lg"
             style={{ 
               height: `${Math.max(progress * 100, completionPercentage)}%`, 
               transition: "height 200ms ease-out",
-              boxShadow: "0 0 16px rgba(217, 119, 6, 0.6)"
+                 boxShadow: "0 0 16px rgba(59, 130, 246, 0.6)"
             }}
           />
 
@@ -265,11 +265,11 @@ const TimelineSection = () => {
           
           {/* Mobile gold/brown spine fill */}
           <div
-            className="md:hidden absolute left-[22px] top-0 w-[2px] bg-gradient-to-b from-amber-500 via-yellow-600 to-orange-700 will-change-[height] shadow-md"
+              className="md:hidden absolute left-[22px] top-0 w-[2px] bg-gradient-to-b from-blue-500 via-gold to-blue-700 will-change-[height] shadow-md"
             style={{ 
               height: `${Math.max(progress * 100, completionPercentage)}%`, 
               transition: "height 200ms ease-out",
-              boxShadow: "0 0 12px rgba(217, 119, 6, 0.5)"
+                 boxShadow: "0 0 12px rgba(59, 130, 246, 0.5)"
             }}
           />
 
