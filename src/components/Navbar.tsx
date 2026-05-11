@@ -26,55 +26,38 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleClick = (href: string) => {
-    setMobileOpen(false);
-    if (href.startsWith("/#")) {
-      const id = href.slice(2);
-      if (location.pathname === "/") {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      } else {
-        window.location.href = href;
-      }
+  useEffect(() => {
+    if (location.pathname !== "/" || !location.hash) {
+      return;
     }
-  };
+
+    const id = location.hash.slice(1);
+    const frame = window.requestAnimationFrame(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [location.pathname, location.hash]);
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-card shadow-lg" : "bg-card"}`}>
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-20">
-        <Link to="/" className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
           <img src={ieslLogo} alt="IESL Logo" className="h-14" />
           <img src={jiyLogo} alt="JIY Logo" className="h-14" />
         </Link>
 
-        {/* Desktop */}
-        <div className="hidden lg:flex items-center gap-6">
-          {navLinks.map((link) =>
-            link.href.startsWith("/#") ? (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => { e.preventDefault(); handleClick(link.href); }}
-                className="text-charcoal hover:text-royal font-body font-semibold text-xs uppercase tracking-widest transition-colors"
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link
-                key={link.label}
-                to={link.href}
-                className="text-charcoal hover:text-royal font-body font-semibold text-xs uppercase tracking-widest transition-colors"
-              >
-                {link.label}
-              </Link>
-            )
-          )}
-          <a
-            href="/#registration"
-            onClick={(e) => { e.preventDefault(); handleClick("/#registration"); }}
-            className="bg-gold text-white rounded px-5 py-2 font-body font-bold text-xs uppercase tracking-widest animate-blink hover:bg-royal transition-colors"
-          >
-            Register
-          </a>
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              to={link.href}
+              className="nav-link text-charcoal font-body font-semibold text-xs uppercase tracking-widest transition-all duration-300 relative"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
 
         {/* Mobile toggle */}
@@ -89,27 +72,17 @@ const Navbar = () => {
           <button onClick={() => setMobileOpen(false)} className="text-navy-foreground"><X size={24} /></button>
         </div>
         <div className="flex flex-col gap-4 px-6">
-          {navLinks.map((link) =>
-            link.href.startsWith("/#") ? (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => { e.preventDefault(); handleClick(link.href); }}
-                className="text-navy-foreground/80 hover:text-gold font-body font-semibold text-sm uppercase tracking-widest py-2 border-b border-navy-foreground/10"
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link
-                key={link.label}
-                to={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-navy-foreground/80 hover:text-gold font-body font-semibold text-sm uppercase tracking-widest py-2 border-b border-navy-foreground/10"
-              >
-                {link.label}
-              </Link>
-            )
-          )}
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              to={link.href}
+              onClick={() => setMobileOpen(false)}
+              className="text-navy-foreground/80 hover:text-gold font-body font-semibold text-sm uppercase tracking-widest py-2 border-b border-navy-foreground/10"
+            >
+              {link.label}
+            </Link>
+          ))}
+
         </div>
       </div>
     </nav>

@@ -46,8 +46,19 @@ const TargetIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%"><defs><linearGradient id="bronzeGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#FDBA74" /><stop offset="50%" stopColor="#D97706" /><stop offset="100%" stopColor="#78350F" /></linearGradient><filter id="glowOrange" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="blur" /><feComposite in="SourceGraphic" in2="blur" operator="over" /></filter></defs><circle cx="60" cy="60" r="50" fill="none" stroke="#EA580C" strokeWidth="0.5" strokeOpacity="0.3"/><line x1="10" y1="60" x2="110" y2="60" stroke="#EA580C" strokeWidth="0.5" strokeOpacity="0.3"/><line x1="60" y1="10" x2="60" y2="110" stroke="#EA580C" strokeWidth="0.5" strokeOpacity="0.3"/><circle cx="60" cy="60" r="40" fill="none" stroke="url(#bronzeGrad)" strokeWidth="4" strokeDasharray="15,10"/><circle cx="60" cy="60" r="25" fill="none" stroke="#EA580C" strokeWidth="2" filter="url(#glowOrange)"/><polygon points="60,45 75,60 60,75 45,60" fill="url(#bronzeGrad)" filter="url(#glowOrange)"/><path d="M30 40 L20 40 L20 50 M90 40 L100 40 L100 50 M30 80 L20 80 L20 70 M90 80 L100 80 L100 70" fill="none" stroke="#F97316" strokeWidth="2"/><circle cx="60" cy="20" r="3" fill="#FB923C"/><circle cx="60" cy="100" r="3" fill="#FB923C"/><circle cx="20" cy="60" r="3" fill="#FB923C"/><circle cx="100" cy="60" r="3" fill="#FB923C"/></svg>
 );
 
-const CompetitionSection = () => (
-  <section id="competition" className="section-padding bg-card">
+import Timeline from "@/components/home/Timeline";
+import { useState } from "react";
+
+const CompetitionSection = () => {
+  const [rocketLaunched, setRocketLaunched] = useState(false);
+
+  const handleRocketClick = () => {
+    setRocketLaunched(true);
+    setTimeout(() => setRocketLaunched(false), 2500);
+  };
+
+  return (
+    <section id="competition" className="section-padding bg-card">
     <div className="max-w-7xl mx-auto">
       <h2 className="text-3xl md:text-4xl text-charcoal text-center mb-4">The Competition</h2>
       <div className="gold-divider mb-12" />
@@ -68,12 +79,14 @@ const CompetitionSection = () => (
         </div>
       </div>
 
+      <Timeline items={timeline} />
+
       {/* Prizes Section */}
       <h3 className="text-2xl text-charcoal text-center mb-8">Prizes</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto items-end">
         
         {/* 2nd Place Card */}
-        <div className="group bg-card rounded shadow card-hover text-center p-8 border border-border transition-all duration-500 hover:bg-cyan-500/10">
+        <div className="group bg-card rounded shadow card-hover text-center p-8 border border-border transition-all duration-500 hover:bg-cyan-500/10 min-h-[240px] flex flex-col justify-center">
           <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:filter group-hover:drop-shadow-[0_0_15px_rgba(34,211,238,0.8)]">
             <BulbIcon />
           </div>
@@ -82,13 +95,13 @@ const CompetitionSection = () => (
         </div>
 
         {/* 1st Place Card - THE ROCKET SCENE */}
-        <div className="group relative bg-[#020617] rounded shadow-2xl text-center p-8 border-2 border-gold overflow-hidden min-h-[400px] flex flex-col justify-end">
+        <div className="group relative bg-card rounded shadow card-hover text-center p-8 border border-border overflow-hidden flex flex-col justify-between items-center min-h-[240px]">
           
           {/* Animated Stars */}
           {[1, 2, 3, 4].map((i) => (
             <div 
               key={i} 
-              className="absolute w-[2px] height-[25px] bg-white rounded-full opacity-0 group-hover:animate-[rocket-stars_1s_linear_infinite]"
+              className="absolute w-[2px] height-[25px] bg-gold rounded-full opacity-0 group-hover:animate-[rocket-stars_1s_linear_infinite]"
               style={{ left: `${i * 20}%`, animationDelay: `${i * 0.3}s` }}
             />
           ))}
@@ -97,25 +110,29 @@ const CompetitionSection = () => (
           {[1, 2, 3, 4].map((i) => (
             <div 
               key={i} 
-              className="absolute top-[180px] left-1/2 w-4 h-4 bg-white/20 rounded-full blur-[2px] opacity-0 group-hover:animate-[rocket-smoke_2s_linear_forwards]"
+              className="absolute top-1/2 left-1/2 w-4 h-4 bg-gold/30 rounded-full blur-[2px] opacity-0 group-hover:animate-[rocket-smoke_2s_linear_forwards]"
               style={{ animationDelay: `${i * 0.4}s` }}
             />
           ))}
 
-          {/* The Rocket Wrapper */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-[150px] w-28 h-28 group-hover:animate-[rocket-shake_0.08s_infinite,rocket-launch-top_2.5s_ease-in_forwards] z-30">
+          {/* The Rocket Wrapper - Centered */}
+          <div 
+            onClick={handleRocketClick}
+            className="relative w-20 h-20 flex items-center justify-center flex-1 z-30 cursor-pointer transition-transform duration-2000 ease-in-out"
+            style={{ transform: rocketLaunched ? "translateY(-500px)" : "translateY(0)" }}
+          >
           <RocketIcon />
         </div>
 
-          {/* Content */}
-          <div className="relative z-10 bg-[#020617]/60 p-2 rounded">
-            <h4 className="font-heading text-xl font-bold text-white mb-1">1st Place</h4>
-            <p className="text-2xl font-bold text-[#FBBF24] drop-shadow-md">LKR 500,000</p>
+          {/* Content at Bottom */}
+          <div className="relative z-10 w-full">
+            <h4 className="font-heading text-xl font-bold text-charcoal mb-1">1st Place</h4>
+            <p className="text-2xl font-bold text-gold">LKR 500,000</p>
           </div>
         </div>
 
         {/* 3rd Place Card */}
-        <div className="group bg-card rounded shadow card-hover text-center p-8 border border-border">
+        <div className="group bg-card rounded shadow card-hover text-center p-8 border border-border min-h-[240px] flex flex-col justify-center">
           <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center transition-transform duration-500 group-hover:rotate-180 group-hover:scale-125">
             <TargetIcon />
           </div>
@@ -126,6 +143,7 @@ const CompetitionSection = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default CompetitionSection;
