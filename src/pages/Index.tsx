@@ -14,14 +14,15 @@ import GallerySection from "@/components/home/GallerySection";
 import FAQSection from "@/components/home/FAQSection";
 import TimelineSection from "@/components/home/TimelineSection";
 import PrizesSection from "@/components/home/PrizesSection";
+import PrizePool from "@/components/home/PrizePool";
 
 const Index = () => (
   <>
     <Navbar />
     <HeroSection />
     <CompetitionSection />
-    <TimelineSection />
-    <PrizesSection />
+    <TimelineSection /> 
+    <PrizePool />
     <RegistrationSection />
     <AboutSection />
     <CommitteeSection />
